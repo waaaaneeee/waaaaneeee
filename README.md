@@ -4,27 +4,6 @@
 
 Technical interests in backend trust boundaries, operating-system isolation, and memory safety.
 
-**Application / Database Boundary**
-
-```text
-untrusted client    | application                  | PostgreSQL
-request ------------|-> authenticate / authorize   |
-                    |   validate input             |
-                    |   parameterized SQL ---------|-> query execution
-                    |                              |   role privileges
-                    |                              |   row policies (if enabled)
-```
-
-**User / Kernel Boundary**
-
-```text
-user space          | kernel space (Linux)
-process -- syscall -|-> entry / seccomp (if configured)
-                    |   handler: argument / permission checks
-                    |     uaccess helpers where needed
-process <-----------|-- result / error code
-```
-
 ## Engineering Focus
 
 **Systems Security**\
