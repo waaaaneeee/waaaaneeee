@@ -28,22 +28,22 @@ canaries   :  copy_from_user  :   page tables
 
 ## Engineering Focus
 
-**01 / Systems Security**\
+**Systems Security**\
 Privilege separation. Syscall attack surface. Seccomp, capabilities, namespaces.
 
-**02 / Binary Exploitation**\
+**Binary Exploitation**\
 Memory corruption primitives. Return-oriented programming. Mitigation analysis: ASLR, W^X, CET, stack canaries.
 
-**03 / Kernel Internals**\
+**Kernel Internals**\
 Syscall entry path. Virtual memory and page tables. SMEP, SMAP, KASLR.
 
-**04 / Memory Safety**\
+**Memory Safety**\
 Ownership and lifetimes. Safety contracts. FFI boundaries. Allocator behavior.
 
-**05 / Reverse Engineering**\
+**Reverse Engineering**\
 ELF layout. System V ABI. x86-64 disassembly. Control-flow recovery.
 
-**06 / Secure Backend Architecture**\
+**Secure Backend Architecture**\
 Least privilege. Database-enforced authorization. Transactional integrity.
 
 ---
