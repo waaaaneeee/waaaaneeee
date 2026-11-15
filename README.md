@@ -2,7 +2,7 @@
 
 **Software Engineer — Application Security & Backend Systems**
 
-Backend systems. Low-level security research. Trust boundaries enforced from application logic to kernel interfaces.
+Systems security. Kernel internals. Memory safety. Trust boundaries enforced from application logic to ring 0.
 
 ```text
 untrusted  :  application     :   database
@@ -14,31 +14,37 @@ upload     :  authenticate    :   constraints
     trust boundary     trust boundary
 ```
 
-**Memory & Privilege Boundaries**
+**User / Kernel Boundary**
 
 ```text
-checked    :  unchecked       :   privileged
+user space :  entry           :   kernel
            :                  :
-Rust -------> unsafe, FFI ------> kernel
-ownership  :  raw pointers    :   syscall ABI
-lifetimes  :  C ABI           :   page permissions
-           :  invariants      :   seccomp
-    unsafe boundary  privilege boundary
+process ----> syscall ----------> ring 0
+ASLR, PIE  :  seccomp         :   SMEP, SMAP
+W^X, CET   :  capabilities    :   KASLR
+canaries   :  copy_from_user  :   page tables
+   syscall boundary  privilege boundary
 ```
 
 ## Engineering Focus
 
-**01 / Memory Safety & Unsafe Boundaries**\
-Ownership semantics. Safety contracts. FFI boundaries. Explicit memory invariants.
+**01 / Systems Security**\
+Privilege separation. Syscall attack surface. Seccomp, capabilities, namespaces.
 
-**02 / Binary Analysis & Executable Internals**\
-ELF internals. System V ABI. x86-64 assembly. Loader behavior and execution flow.
+**02 / Binary Exploitation**\
+Memory corruption primitives. Return-oriented programming. Mitigation analysis: ASLR, W^X, CET, stack canaries.
 
-**03 / Privilege Separation**\
-System call surface. Process isolation. Linux capabilities. Seccomp filtering.
+**03 / Kernel Internals**\
+Syscall entry path. Virtual memory and page tables. SMEP, SMAP, KASLR.
 
-**04 / Secure Backend Architecture**\
-Least privilege. Database-enforced authorization. Transactional integrity. Defense in depth.
+**04 / Memory Safety**\
+Ownership and lifetimes. Safety contracts. FFI boundaries. Allocator behavior.
+
+**05 / Reverse Engineering**\
+ELF layout. System V ABI. x86-64 disassembly. Control-flow recovery.
+
+**06 / Secure Backend Architecture**\
+Least privilege. Database-enforced authorization. Transactional integrity.
 
 ---
 
